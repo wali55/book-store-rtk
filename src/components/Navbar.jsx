@@ -1,8 +1,17 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LogoIcon from "../assets/logo.svg";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchedText } from "../features/booksSlice";
 
 const Navbar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    dispatch(searchedText(search));
+  }, [search]);
 
   let navClassBook;
   let navClassAdd;
@@ -40,7 +49,7 @@ const Navbar = () => {
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z">
             </path>
           </svg>
-          <input type="text" placeholder="Filter books..." className="search" id="lws-search" />
+          <input value={search} type="text" placeholder="Filter books..." className="search" id="lws-search" onChange={(e) => setSearch(e.target.value)} />
         </div>
       </form>
     </div>

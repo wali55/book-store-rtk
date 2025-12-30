@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isFeatured: false,
+  text: "",
 };
 
 const booksSlice = createSlice({
@@ -11,8 +12,11 @@ const booksSlice = createSlice({
     showFeatured: (state, action) => {
       state.isFeatured = action.payload;
     },
+    searchedText: (state, action) => {
+      state.text = action.payload;
+    },
   },
 });
 
 export default booksSlice.reducer;
-export const {showFeatured} = booksSlice.actions;
+export const { showFeatured, searchedText } = booksSlice.actions;
