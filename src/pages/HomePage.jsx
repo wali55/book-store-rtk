@@ -1,4 +1,5 @@
 import BookList from "../components/BookList"
+import FilterBooks from "../components/FilterBooks"
 
 const HomePage = () => {
   return (
@@ -7,10 +8,7 @@ const HomePage = () => {
       <div className="flex items-center justify-between mb-12">
         <h4 className="mt-2 text-xl font-bold">Book List</h4>
 
-        <div className="flex items-center space-x-4">
-          <button className="lws-filter-btn active-filter">All</button>
-          <button className="lws-filter-btn">Featured</button>
-        </div>
+        <FilterBooks />
       </div>
       
       <BookList />
